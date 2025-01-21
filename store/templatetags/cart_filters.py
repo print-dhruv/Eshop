@@ -30,3 +30,7 @@ def total_cart_price(product,cart):
 @register.filter
 def currency(number):
     return "₹"+str(number)
+
+@register.filter
+def orders_total(quantity,price):
+    return quantity*price

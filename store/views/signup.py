@@ -29,16 +29,16 @@ class Signup(View):
         send_mail(
             f"customer number {Customer.objects.filter(email=email).first().id} sign In", 
             f"{first_name} {last_name} sign in with Email iD {email} and contact number {contact}",
-            "achernar009@gmail.com",
-            ["fosikej882@halbov.com",],
+            "achernar009@gmail.com", # server mail id
+            ["fosikej882@halbov.com",], # developer id
             False,
         )
         # Confirmation mail to customer
         send_mail(
             "Successful signIn at Eshop", 
             f"Congratulations!! {first_name} you are successfully signin as a customer in Eshop",
-            "achernar009@gmail.com",
-            [email,],
+            "achernar009@gmail.com", # server id
+            [email,], # customer id
             False
         )
 

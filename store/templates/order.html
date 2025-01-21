@@ -1,0 +1,64 @@
+{%extends "store_master_template.html"%} 
+{%load cart_filters%}
+{% block head %}
+    <title>Orders</title>
+{% endblock %} 
+
+{% block body %}
+
+<!-- Adding a nav bar -->
+{%include 'navbar.html'%}
+
+    <div class="container">
+         <div class="border rounded p-4 m-4">
+            <p class="display-4 pl-4 ml-4">Your Orders</p>
+            <hr>
+            <div class="table-responsive" >
+                <table class="table table-primary" >
+                    <thead>
+                        <tr>
+                            <th scope="col">S.no. </th>
+                            <th scope="col">Product Image</th> <!--this will be access through product foreign key-->
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Product Price</th>                            
+                            <th scope="col">Product Quantity</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>    
+                    <tbody>
+                        {%for order in orders%}
+                        <tr class="">
+                            <td scope="row">{{forloop.counter}}</td>
+                            <td><img style="height: 80px;" class="rounded-circle" src="{{order.product_id.product_image.url}}" alt=""></td>                        
+                            <td>{{order.product_id.product_name}}</td> <!--Accessing through product foreign key-->
+                            <td>{{order.date}}</td>
+                            <td>{{order.price| currency }}</td>                            
+                            <td>{{order.quantity}}</td>
+                            <td>{{order.quantity | orders_total:order.price| currency }}</td>
+                            {%if order.status %}
+                            <td>
+                                <div class="alert alert-success" role="alert" style="background-color: #28a745; color: #ffffff;">
+                                Completed
+                                </div>
+                            </td>
+                            {%else%}
+                            <td>
+                                <div class="alert alert-warning" role="alert" style="background-color: #ffc107; color: #212529;">
+                                Pending
+                                </div>
+                            </td>
+                            {%endif%}
+
+                        </tr>
+                        {%endfor%}
+                    </tbody>                    
+                </table>
+                <hr>
+            </div> 
+         </div>
+    </div>
+
+
+{% endblock %}

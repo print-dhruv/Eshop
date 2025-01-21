@@ -1,0 +1,146 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: white;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  /* Container */
+  .checkout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Form Card */
+  .checkout-form {
+    background: #fff;
+    border: 2px solid #ddd; /* Clear border around the card */
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Title */
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #6a11cb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Form Group */
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd; /* Clear border around inputs */
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #6a11cb;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Order Summary */
+  .order-summary {
+    background-color: #f8faff;
+    border: 2px solid #d1e3ff; /* Clear border around the order summary */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .order-summary h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #6a11cb;
+  }
+  
+  .order-summary p {
+    font-size: 14px;
+    margin: 5px 0;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  /* Place Order Button */
+  .btn-primary {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border: 2px solid #6a11cb; /* Clear border around the button */
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(to right, #5b0dbb, #1b64e3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .checkout-form {
+      padding: 20px;
+    }
+  
+    .title {
+      font-size: 24px;
+    }
+  
+    .btn-primary {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+  }
+  

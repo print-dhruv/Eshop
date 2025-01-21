@@ -1,0 +1,41 @@
+{%extends "store_master_template.html"%}
+{%load static%} 
+{% block head %}
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="{%static 'css/store/checkout.css'%}">
+{% endblock %} 
+
+
+{% block body %}
+  <div class="checkout-container">
+    <div class="checkout-form">
+      <h2 class="title">Checkout</h2>
+      <form action="#" method="POST">
+        {% csrf_token %} 
+        <!-- Address -->
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" class="form-control" rows="3" placeholder="Enter your address" required></textarea>
+        </div>
+        
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" name="phone" id="phone" class="form-control" placeholder="Enter your phone number" required>
+        </div>
+
+        <!-- Order Summary -->
+        <!-- <div class="order-summary">
+          <h4>Order Summary</h4>
+          <p><strong>Items:</strong> 3</p>
+          <p><strong>Total Price:</strong> $120.00</p>
+        </div> -->
+
+        <!-- Place Order Button -->
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary btn-lg">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

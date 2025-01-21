@@ -1,5 +1,5 @@
 from django.contrib import admin
-from store.models import Product, Categories, Customer
+from store.models import Product, Categories, Customer, Orders
 # Register your models here.
 
 
@@ -12,6 +12,10 @@ class AdminCategorieView(admin.ModelAdmin):
 class AdminCustomerView(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'contact')
 
+class AdminOrderView(admin.ModelAdmin):
+    list_display = ('customer_id','product_id','quantity','price','date')
+
 admin.site.register(Product, AdminProductView)
 admin.site.register(Categories, AdminCategorieView)
 admin.site.register(Customer,AdminCustomerView)
+admin.site.register(Orders,AdminOrderView)

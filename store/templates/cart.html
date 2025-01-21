@@ -31,25 +31,25 @@
                             <td><img style="height: 80px;" class="rounded-circle" src="{{product.product_image.url}}" alt=""></td>                        
                             <td>{{product.product_name}}</td>
                             <td>{{product.product_price | currency }}</td>
-                            <td>{{product | product_count_in_cart:request.session.cart}}</td>
-                            <td>{{product | total_price:request.session.cart| currency }}</td>
+                            <td>{{product | product_count_in_cart:cart}}</td>
+                            <td>{{product | total_price:cart| currency }}</td>
                         </tr>
                         {%endfor%}
                     </tbody>
                     <tfoot>
                         <tr>
                             <th colspan="5">Total</th>
-                            <th>{{cart_products|total_cart_price:request.session.cart|currency}}</th>
+                            <th>{{cart_products|total_cart_price:cart|currency}}</th>
                         </tr>
                     </tfoot>
                 </table>
                 <hr>
+                {%if cart|length > 0%}
                 <div class="m-3 p-3">
                     <a href="/checkout" class="btn btn-outline-info border rounded col-lg-3 float-right">Check out</a>
                 </div>
-            </div>
-            
+                {%endif%}
+            </div> 
          </div>
     </div>
-
 {% endblock %}
