@@ -29,7 +29,7 @@ class Signup(View):
         send_mail(
             f"customer number {Customer.objects.filter(email=email).first().id} sign In", 
             f"{first_name} {last_name} sign in with Email iD {email} and contact number {contact}",
-            "achernar009@gmail.com", # server mail id
+            "dhruvdotsquares@gmail.com", # server mail id
             ["fosikej882@halbov.com",], # developer id
             False,
         )
