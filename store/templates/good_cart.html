@@ -1,0 +1,49 @@
+<!-- This file has no view/ this is to used later -->
+
+{%extends "store_master_template.html"%} {% load static %} 
+{% block head %}
+    <title>Cart</title>
+    <link rel="stylesheet" href="{% static 'css/store/cart.css' %}">
+{% endblock %} 
+{% block body %}
+<!-- Adding a nav bar -->
+{%include 'navbar.html'%}
+
+<div class="cart-container">
+    <!-- Header -->
+    <header class="cart-header">
+        <h1>Your Cart</h1>
+    </header>
+
+    <!-- Cart Items Section -->
+    {%for product in cart_products%}
+    <section class="cart-items">
+        <!-- Example Cart Item -->
+        <div class="cart-item" data-item-id="1">
+            <img src="https://via.placeholder.com/100" alt="Product Image" class="item-image">
+            <div class="item-details">
+                <h2 class="item-title">{{product.product_name}}</h2>
+                <p class="item-price">{{product.product_price}}</p>
+                <div class="item-quantity">
+                    <button class="quantity-btn decrease">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button class="quantity-btn increase">+</button>
+                </div>
+                <button class="remove-item">Remove</button>
+            </div>
+        </div>
+        <!-- Repeat .cart-item for more products -->
+    </section>
+    {%endfor%}
+    <!-- Summary Section -->
+    <aside class="cart-summary">
+        <h2>Order Summary</h2>
+        <p class="subtotal">Subtotal: <span class="subtotal-value">$49.99</span></p>
+        <p class="shipping">Shipping: <span class="shipping-value">Free</span></p>
+        <p class="total">Total: <span class="total-value">$49.99</span></p>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </aside>
+</div>
+
+<script src="{%static 'js/store/cart.js'%}"></script>
+{% endblock %}

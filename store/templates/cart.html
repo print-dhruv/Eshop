@@ -1,0 +1,55 @@
+{%extends "store_master_template.html"%} 
+{%load cart_filters%}
+{% load static %} 
+{% block head %}
+    <title>Cart</title>
+{% endblock %} 
+{% block body %}
+<!-- Adding a nav bar -->
+{%include 'navbar.html'%}
+
+    <div class="container">
+         <div class="border rounded p-4 m-4">
+            <p class="display-4 pl-4 ml-4">Your Cart</p>
+            <hr>
+            <div class="table-responsive" >
+                <table class="table table-primary" >
+                    <thead>
+                        <tr>
+                            <th scope="col">S.no. </th>
+                            <th scope="col">Product Image</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Price</th>
+                            <th scope="col">Product Quantity</th>
+                            <th scope="col">Total Price</th>
+                        </tr>
+                    </thead>    
+                    <tbody>
+                        {%for product in cart_products%}
+                        <tr class="">
+                            <td scope="row">{{forloop.counter}}</td>
+                            <td><img style="height: 80px;" class="rounded-circle" src="{{product.product_image.url}}" alt=""></td>                        
+                            <td>{{product.product_name}}</td>
+                            <td>{{product.product_price | currency }}</td>
+                            <td>{{product | product_count_in_cart:request.session.cart}}</td>
+                            <td>{{product | total_price:request.session.cart| currency }}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">Total</th>
+                            <th>{{cart_products|total_cart_price:request.session.cart|currency}}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr>
+                <div class="m-3 p-3">
+                    <a href="/checkout" class="btn btn-outline-info border rounded col-lg-3 float-right">Check out</a>
+                </div>
+            </div>
+            
+         </div>
+    </div>
+
+{% endblock %}

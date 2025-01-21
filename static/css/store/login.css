@@ -1,0 +1,119 @@
+  /* css for sign up page */
+  body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(to bottom right, #f7f8fc, #dfe9f3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .signup-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    width: 100%;
+  }
+
+  .signup-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .signup-form label {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .signup-form input {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0 14px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .password-container {
+    position: relative;
+  }
+
+  .password-container input {
+    padding-right: 35px;
+  }
+
+  .password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+  }
+
+  .signup-form input:focus {
+    border-color: #6a11cb;
+    outline: none;
+    box-shadow: 0 0 6px rgba(106, 17, 203, 0.4);
+  }
+
+  .signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .signup-form button:hover {
+    background-color: #2575fc;
+  }
+
+  .signup-form .signup {
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .signup-form .signup a {
+    color: #2575fc;
+    text-decoration: none;
+  }
+
+  .signup-form .signup a:hover {
+    text-decoration: underline;
+  }
+
+  .signup-form .social-signup {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .social-signup a img {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+  }
+
+  .social-signup a img:hover {
+    transform: scale(1.1);
+  }
+  .signup-form .error-message {
+    color: red; /* Set text color to red */
+    font-size: 14px; /* Slightly larger text for better visibility */
+    text-align: center; /* Center align the error message */
+    margin-bottom: 15px; /* Space below the error message */
+  }

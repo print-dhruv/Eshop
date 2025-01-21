@@ -1,0 +1,6 @@
+Sing in with google
+confirmation mail to customer and details mail to owner
+filtering of content
+mail uniqueness
+invalid details logic
+class bases views

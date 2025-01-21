@@ -1,0 +1,70 @@
+{% extends "store_master_template.html" %}
+{% load static %}
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<title>Sign Up</title>
+<link rel="stylesheet" href="{%static 'css/store/signup.css'%}">
+
+{% endblock %}
+
+{% block body %}
+
+{%comment%}<!-- Html sign up form template -->
+<!-- Here action will redirect to the location after hiting sign up button, here "/" -> is root folder, 
+/signup means (127.0.0.1:8000/signup)-->{%endcomment%}
+
+<form class="signup-form" action="/signup/" method="post" >
+
+  {%csrf_token%}  
+
+  <h2>Create an Account</h2>
+
+  <label for="first-name">First Name</label>
+  <input type="text" id="first-name" name="first_name" placeholder="Enter your first name" required/>
+
+  <label for="last-name">Last Name</label>
+  <input type="text" id="last-name" name="last_name" placeholder="Enter your last name" required/>
+
+  <label for="phone">Contact Number</label>
+  <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required pattern="\d+" 
+          title="Enter number only" maxlength="15" />
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+  <label for="password">Password</label>
+  <div class="password-container">
+    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+    <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span>
+  </div>
+
+  <!-- <label for="confirm-password">Confirm Password</label>
+  <div class="password-container">
+    <input
+      type="password"
+      id="confirm-password"
+      name="confirm_password"
+      placeholder="Confirm your password"
+      required
+    />
+    <span class="toggle-password" onclick="togglePassword('confirm-password')">&#128065;</span>
+  </div> -->
+
+  <button type="submit">Sign Up</button>
+  <p class="terms">
+    By signing up, you agree to our <a href="#">Terms & Conditions</a>.
+  </p>
+  <p class="login">
+    Already Registered <a href="/login">Login here</a>
+  </p>
+
+  <div class="social-signup">
+    <a href="#" title="Sign Up with Google"><img class="google-logo" src="{% static 'logo/google.svg' %}" alt="Google"/></a>
+    <a href="#" title="Sign Up with Facebook"><img src="{% static 'logo/meta.svg' %}" alt="Facebook"/></a>
+    <a href="#" title="Sign Up with Microsoft"><img src="{% static 'logo/microsoft.svg' %}" alt="Microsoft"/></a>
+    <a href="#" title="Sign Up with Twitter"><img src="{% static 'logo/twitter-x.svg' %}" alt="X"/></a>
+  </div>
+</form>
+
+<script src="{%static 'js/store/password_hide_unhide.js'%}"></script>
+{% endblock %}

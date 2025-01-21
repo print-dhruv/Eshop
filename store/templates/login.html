@@ -1,0 +1,42 @@
+{% extends "store_master_template.html" %}
+{% load static %} 
+
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+<title>Log in</title>
+<link rel="stylesheet" href="{%static 'css/store/login.css'%}">
+{% endblock %} 
+
+{% block body%}
+
+<form class="signup-form" action="/login/" method="post">
+  {% csrf_token %}
+
+  {%if error%}
+  <div class="error-message">{{ error }}</div>
+  {%endif%}
+
+  <h2>Login Here</h2>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+  <label for="password">Password</label>
+  <div class="password-container">
+    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+    <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span>
+  </div>
+
+  <button type="submit">Log in</button>
+  <p class="signup">Don't have an account yet? <a href="/signup">Sign Up</a></p>
+
+  <div class="social-signup">
+    <a href="#" title="Sign up with Google"><img class="google-logo" src="{% static 'logo/google.svg' %}" alt="Google"/></a>
+    <a href="#" title="Sign up with Facebook"><img src="{% static 'logo/meta.svg' %}" alt="Facebook"/></a>
+    <a href="#" title="Sign up with Microsoft"><img src="{% static 'logo/microsoft.svg' %}" alt="Microsoft"/></a>
+    <a href="#" title="Sign up with Twitter"><img src="{% static 'logo/twitter-x.svg' %}" alt="X"/></a>
+  </div>
+</form>
+
+<script src="{%static 'js/store/password_hide_unhide.js'%}"></script>
+{% endblock %}
