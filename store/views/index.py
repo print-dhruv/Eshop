@@ -30,21 +30,10 @@ class Index(View):
         remove = request.POST.get('remove')
 
         if remove:
-            if product_id in cart:
-                if cart[product_id]>1:
-                    cart[product_id] -= 1
-                else:
-                    cart.pop(product_id)
-            else:
-                request.session['cart'] = cart
-                return redirect('index')
+            cart.pop(product_id)
         else:
-            if product_id in cart:
-                cart[product_id] += 1
-            else:
-                cart[product_id] = 1
-
-
+            cart[product_id] = 1
+                
         #saving the cart progress
         request.session['cart'] = cart
 

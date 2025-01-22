@@ -13,7 +13,7 @@
             <p class="display-4 pl-4 ml-4">Your Cart</p>
             <hr>
             <div class="table-responsive" >
-                <table class="table table-primary" >
+                <table class="table table-primary" style="text-align: center; vertical-align: middle;" >
                     <thead>
                         <tr>
                             <th scope="col">S.no. </th>
@@ -31,8 +31,23 @@
                             <td><img style="height: 80px;" class="rounded-circle" src="{{product.product_image.url}}" alt=""></td>                        
                             <td>{{product.product_name}}</td>
                             <td>{{product.product_price | currency }}</td>
-                            <td>{{product | product_count_in_cart:cart}}</td>
-                            <td>{{product | total_price:cart| currency }}</td>
+                            <td>
+                                <!-- Reducing product -->
+                                <form action="" method="POST" class="d-inline-block">
+                                    {% csrf_token %}
+                                    <input hidden type="text" name="remove" value="True" />
+                                    <input hidden type="text" name="product_id" value="{{product.id}}" />
+                                    <input type="submit" value="-" class="col-1 btn btn-block btn-secondary"/>
+                                </form>
+                                {{product | product_count_in_cart:cart}}
+                                <!-- increasing product -->
+                                <form action=" " method="POST" class="d-inline-block">
+                                    {% csrf_token %}
+                                    <input hidden type="text" name="product_id" value="{{product.id}}"/>
+                                    <input type="submit" value="+" class="col-1 btn btn-block btn-secondary" />
+                                </form>                                                          
+                                </td>                              
+                                <td>{{product | total_price:cart| currency }}</td>
                         </tr>
                         {%endfor%}
                     </tbody>
@@ -44,11 +59,13 @@
                     </tfoot>
                 </table>
                 <hr>
-                {%if cart|length > 0%}
+                
                 <div class="m-3 p-3">
+                    {%if cart|length > 0%}
                     <a href="/checkout" class="btn btn-outline-info border rounded col-lg-3 float-right">Check out</a>
+                    {%endif%}
+                    <a href="/" class="btn btn-outline-info border rounded col-lg-3 float-right" >Countinue Shopping</a>
                 </div>
-                {%endif%}
             </div> 
          </div>
     </div>

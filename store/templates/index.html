@@ -37,41 +37,23 @@
           <div class="card-body">
             <h5 class="card-title">{{ product.product_name }}</h5>
             <p class="card-text"><b>{{ product.product_price| currency  }}</b></p>
-
-
+            
       <!-- logic to choose add to cart button or increment decrement buttton -->
             <div class="card-footer p-0 row no-gutters">
       <!-- logic to check weather a product is in cart or not using template filters -->
               {%if product|is_in_cart:cart%}
-              <div class="row no-gutters">
-
-                <form action="/#{{product.id}}" method="POST" class="d-inline-block">
-                  {% csrf_token %}
-                  <input hidden type="text" name="remove" value="True" />
-                  <input hidden type="text" name="product_id" value="{{product.id}}" />
-                  <input type="submit" value="-" class="col-1 btn btn-block btn-secondary"/>
-                </form>
-                
-                <div class="text-center col">
-                  {{product | product_count_in_cart:cart}} items in cart
-                </div>
-
-                <form action="/#{{product.id}}" method="POST" class="d-inline-block">
-                  {% csrf_token %}
-                  <input hidden type="text" name="product_id" value="{{product.id}}"/>
-                  <input type="submit" value="+" class="col-1 btn btn-block btn-secondary" />
-                </form>
-
-              </div>
-
+              <form action="" method="POST" class="d-inline-block">
+                {% csrf_token %}
+                <input hidden type="text" name="remove" value="True" />
+                <input hidden type="text" name="product_id" value="{{product.id}}" />
+                <input type="submit" value="Remove from cart" class="btn btn-primary"/>
+              </form>
               {%else%}
-
               <form action="/#{{product.id}}" method="POST">
                 {% csrf_token %}
                 <input hidden type="text" name="product_id" value="{{product.id}}" />
                 <input type="submit" class="btn btn-primary" value="Add to cart"/>
               </form>
-
               {%endif%}
             </div>
           </div>
