@@ -9,7 +9,7 @@ class OrdersView(View):
         orders_of_customer = Orders.objects.filter(customer_id=session_customer_id).order_by('-date')
         
         #code for setting pagination    
-        orders_page_pagination = Paginator(orders_of_customer,1)
+        orders_page_pagination = Paginator(orders_of_customer,3)
         page_number = request.GET.get('page')
         final_pages = orders_page_pagination.get_page(page_number)
         #for sending last page

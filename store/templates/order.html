@@ -55,29 +55,31 @@
                     </tbody>                    
                 </table>
                 <hr>
-                <nav aria-label="...">
-                    <ul class="pagination">
-                        {%if orders.has_previous%} <!--paginator object hold various key which help in pagination has_previous is one of them-->
-                      <li class="page-item">
-                        <a class="page-link" href="/orders/?page={{orders.previous_page_number}}" tabindex="-1">Previous</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="/orders/?page=1" tabindex="-1">Home</a></li>
-                        {%endif%}
-                        {%for page in list_of_page_numbers%}
-                            <li class="page-item {% if page == orders.number %}active{% endif %}" >
-                                <a class="page-link" href="/orders/?page={{page}}">{{page}}</a>
-                            </li>
-                        {%endfor%}
-                      {%if orders.has_next%}
-                      <li class="page-item">
-                        <a class="page-link" href="/orders/?page={{orders.next_page_number}}">Next</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="/orders/?page={{last_page}}">End</a>
-                      </li>
-                      {%endif%}
-                    </ul>
-                  </nav>
+                <div class="d-flex justify-content-center">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            {%if orders.has_previous%} <!--paginator object hold various key which help in pagination has_previous is one of them-->
+                          <li class="page-item">
+                            <a class="page-link" href="/orders/?page={{orders.previous_page_number}}" tabindex="-1">Previous</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="/orders/?page=1" tabindex="-1">Home</a></li>
+                            {%endif%}
+                            {%for page in list_of_page_numbers%}
+                                <li class="page-item {% if page == orders.number %}active{% endif %}" >
+                                    <a class="page-link" href="/orders/?page={{page}}">{{page}}</a>
+                                </li>
+                            {%endfor%}
+                          {%if orders.has_next%}
+                          <li class="page-item">
+                            <a class="page-link" href="/orders/?page={{orders.next_page_number}}">Next</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="/orders/?page={{last_page}}">End</a>
+                          </li>
+                          {%endif%}
+                        </ul>
+                      </nav>
+                </div>                
             </div> 
          </div>
     </div>

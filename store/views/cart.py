@@ -17,15 +17,20 @@ class Cart(View):
     def post(self,request):
         cart = request.session.get('cart',{})
         product_id = request.POST.get('product_id')
-        decrease = request.POST.get('remove')
-
-        if decrease:
-            if cart[product_id]>1:
-                cart[product_id] -= 1
-            else:
+        action = request.POST.get('action')        
+        
+        # writing logic to remove add and decrease quantity of product
+        if product_id:
+            if action=='remove':
                 cart.pop(product_id)
-        else:
-            cart[product_id] += 1
-            
+            elif action=='decrease':
+                if cart[product_id]>1:
+                    cart[product_id] -= 1
+                else:
+                    cart.pop(product_id)
+            elif action =='increase':
+                cart[product_id] += 1
+        
+
         request.session['cart'] = cart
         return redirect('cart')

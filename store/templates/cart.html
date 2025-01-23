@@ -21,6 +21,7 @@
                             <th scope="col">Product Name</th>
                             <th scope="col">Product Price</th>
                             <th scope="col">Product Quantity</th>
+                            <th scope="col"></th>
                             <th scope="col">Total Price</th>
                         </tr>
                     </thead>    
@@ -35,7 +36,7 @@
                                 <!-- Reducing product -->
                                 <form action="" method="POST" class="d-inline-block">
                                     {% csrf_token %}
-                                    <input hidden type="text" name="remove" value="True" />
+                                    <input hidden type="text" name="action" value="decrease" />
                                     <input hidden type="text" name="product_id" value="{{product.id}}" />
                                     <input type="submit" value="-" class="col-1 btn btn-block btn-secondary"/>
                                 </form>
@@ -43,9 +44,17 @@
                                 <!-- increasing product -->
                                 <form action=" " method="POST" class="d-inline-block">
                                     {% csrf_token %}
+                                    <input hidden type="text" name="action" value="increase"/>
                                     <input hidden type="text" name="product_id" value="{{product.id}}"/>
                                     <input type="submit" value="+" class="col-1 btn btn-block btn-secondary" />
                                 </form>                                                          
+                                </td>
+                                <td><form action="" method="POST">
+                                    {% csrf_token %}
+                                    <input hidden type="text" name="action" value="remove"/>
+                                    <input hidden type="text" name="product_id" value="{{product.id}}"/>
+                                    <input type="submit" value="remove" />
+                                </form>
                                 </td>                              
                                 <td>{{product | total_price:cart| currency }}</td>
                         </tr>
@@ -53,7 +62,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="5">Total</th>
+                            <th colspan="6">Total</th>
                             <th>{{cart_products|total_cart_price:cart|currency}}</th>
                         </tr>
                     </tfoot>
