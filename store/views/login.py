@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth.hashers import check_password
 from django.views import View
+from django.contrib import messages
 from store.models import Customer
 
 
@@ -29,7 +30,9 @@ class Login(View):
                     return redirect("index")
             else:                
                 error_message="Invalid Email or Password"
+                # messages.error(request,"Invalid Email or Password from django")
         else:
-            error_message="Invalid Email or Password"   
+            error_message="Invalid Email or Password"
+            # messages.error(request,"Invalid Email or Password from django")   
 
         return render(request,"login.html",{'error':error_message, 'Email':email})
