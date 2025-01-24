@@ -7,3 +7,4 @@ class Product(models.Model):
     product_price= models.IntegerField(default=0)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, default=1)
     product_image = models.ImageField(upload_to='media/')
+    product_quantity = models.IntegerField(default=0)

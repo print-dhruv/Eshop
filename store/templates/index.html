@@ -41,9 +41,13 @@
       <!-- logic to choose add to cart button or increment decrement buttton -->
             <div class="card-footer p-0 row no-gutters">
       <!-- logic to check weather a product is in cart or not using template filters -->
-              {%if product|is_in_cart:cart%}
+              {%if product.product_quantity == 0%}
+              <button type="button" class="btn btn-secondary w-100" disabled>
+                Out of Stock
+              </button>
+              {%elif product|is_in_cart:cart%}
               <form action="" method="POST" class="d-inline-block">
-                {% csrf_token %}
+              {% csrf_token %}
                 <input hidden type="text" name="remove" value="True" />
                 <input hidden type="text" name="product_id" value="{{product.id}}" />
                 <input type="submit" value="Remove from cart" class="btn btn-primary"/>

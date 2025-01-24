@@ -38,17 +38,24 @@
                                     {% csrf_token %}
                                     <input hidden type="text" name="action" value="decrease" />
                                     <input hidden type="text" name="product_id" value="{{product.id}}" />
-                                    <input type="submit" value="-" class="col-1 btn btn-block btn-secondary"/>
+                                    <input type="submit" value="-" class="col-1 btn btn-primary"/>
                                 </form>
+                                <!-- Quantity of product in cart -->
                                 {{product | product_count_in_cart:cart}}
                                 <!-- increasing product -->
+                                {%if product|product_count_in_cart:cart >= product.product_quantity %}
+                                <button data-bs-toggle="tooltip" data-bs-placement="top"  title="only {{product.product_quantity}} available" type="button" class="btn btn-secondary text-light opacity-50">
+                                    +
+                                </button>
+                                {%else%}
                                 <form action=" " method="POST" class="d-inline-block">
                                     {% csrf_token %}
                                     <input hidden type="text" name="action" value="increase"/>
                                     <input hidden type="text" name="product_id" value="{{product.id}}"/>
-                                    <input type="submit" value="+" class="col-1 btn btn-block btn-secondary" />
+                                    <input type="submit" value="+" class="col-1 btn btn-primary" />
                                 </form>                                                          
-                                </td>
+                                {%endif%}
+                            </td>
                                 <td><form action="" method="POST">
                                     {% csrf_token %}
                                     <input hidden type="text" name="action" value="remove"/>

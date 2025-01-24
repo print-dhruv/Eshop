@@ -4,7 +4,7 @@ from store.models import Product, Categories, Customer, Orders
 
 
 class AdminProductView(admin.ModelAdmin):
-    list_display = ('product_name','product_price','category') #name should be list_display
+    list_display = ('product_name','product_price','product_quantity','category') #name should be list_display
 
 class AdminCategorieView(admin.ModelAdmin):
     list_display = ('name',)

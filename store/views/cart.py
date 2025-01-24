@@ -20,7 +20,7 @@ class Cart(View):
         action = request.POST.get('action')        
         
         # writing logic to remove add and decrease quantity of product
-        if product_id:
+        if action:
             if action=='remove':
                 cart.pop(product_id)
             elif action=='decrease':
@@ -30,7 +30,5 @@ class Cart(View):
                     cart.pop(product_id)
             elif action =='increase':
                 cart[product_id] += 1
-        
-
         request.session['cart'] = cart
         return redirect('cart')
